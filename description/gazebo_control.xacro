@@ -3,7 +3,7 @@
   <gazebo>
     <plugin name="gazebo_ros_ackermann_drive_1" filename="libgazebo_ros_ackermann_drive.so">
 
-      <node_name>ackermann_drive_node</node_name>
+      <node_name>ackermann_drive_node_BALLS</node_name>
 
       <ros>
         <namespace>demo</namespace>
