@@ -98,7 +98,7 @@
             <max_steering_angle>1.570796</max_steering_angle>
 
             <!-- Max absolute linear speed in m/s -->
-            <max_speed>5</max_speed>
+            <max_speed>20</max_speed>
 
             <!-- PID tuning -->
             <left_steering_pid_gain>1500 0 1</left_steering_pid_gain>

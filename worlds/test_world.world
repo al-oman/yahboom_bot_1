@@ -1,0 +1,983 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='my_bot'>
+      <link name='base_footprint'>
+        <inertial>
+          <pose>0.2078 0 0.1555 0 -0 0</pose>
+          <mass>24.73</mass>
+          <inertia>
+            <ixx>0.208333</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1.19271</iyy>
+            <iyz>0</iyz>
+            <izz>1.35938</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_footprint_fixed_joint_lump__chassis_link_collision'>
+          <pose>0.2078 0 0.1555 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://yahboom_bot_1/meshes/Ackermann/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.5</mu>
+                <mu2>0.5</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_footprint_fixed_joint_lump__chassis_link_visual'>
+          <pose>0.2078 0 0.1555 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://yahboom_bot_1/meshes/Ackermann/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='fr_left_steer_joint' type='revolute'>
+        <pose relative_to='base_footprint'>0.32702 0.065 0.1817 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>fr_left_steer_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.6</lower>
+            <upper>0.6</upper>
+            <effort>-1</effort>
+            <velocity>-1</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='fr_left_steer_link'>
+        <pose relative_to='fr_left_steer_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.004468 0.00312 -0.014101 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>6.53333e-05</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>6.53333e-05</iyy>
+            <iyz>0</iyz>
+            <izz>9.8e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='fr_left_steer_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://yahboom_bot_1/meshes/Ackermann/front_left_steer.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='fr_left_wheel_joint' type='revolute'>
+        <pose relative_to='fr_left_steer_link'>0.000229 0.0228 -0.0141 0 0 -0.010042</pose>
+        <parent>fr_left_steer_link</parent>
+        <child>fr_left_wheel_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <effort>200</effort>
+            <velocity>-1</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0.5</damping>
+            <friction>0.8</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='fr_left_wheel_link'>
+        <pose relative_to='fr_left_wheel_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 -0.004812 0 0 -0 0</pose>
+          <mass>3</mass>
+          <inertia>
+            <ixx>0.0196</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0196</iyy>
+            <iyz>0</iyz>
+            <izz>0.0294</izz>
+          </inertia>
+        </inertial>
+        <collision name='fr_left_wheel_link_collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.022</length>
+              <radius>0.035</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='fr_left_wheel_link_visual'>
+          <pose>0 0 0 3.14159 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://yahboom_bot_1/meshes/Ackermann/back_right_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='fr_right_steer_joint' type='revolute'>
+        <pose relative_to='base_footprint'>0.32702 -0.065 0.1797 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>fr_right_steer_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.6</lower>
+            <upper>0.6</upper>
+            <effort>-1</effort>
+            <velocity>-1</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='fr_right_steer_link'>
+        <pose relative_to='fr_right_steer_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.004539 -0.003016 -0.012099 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>6.53333e-05</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>6.53333e-05</iyy>
+            <iyz>0</iyz>
+            <izz>9.8e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='fr_right_steer_link_visual'>
+          <pose>0 0 0 0 -0 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://yahboom_bot_1/meshes/Ackermann/front_left_steer.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='fr_right_wheel_joint' type='revolute'>
+        <pose relative_to='fr_right_steer_link'>-0.000257 -0.019549 -0.0121 0 0 -0.013126</pose>
+        <parent>fr_right_steer_link</parent>
+        <child>fr_right_wheel_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <effort>200</effort>
+            <velocity>-1</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0.5</damping>
+            <friction>0.8</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='fr_right_wheel_link'>
+        <pose relative_to='fr_right_wheel_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0.001562 -0 0 -0 0</pose>
+          <mass>3</mass>
+          <inertia>
+            <ixx>0.0196</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0196</iyy>
+            <iyz>0</iyz>
+            <izz>0.0294</izz>
+          </inertia>
+        </inertial>
+        <collision name='fr_right_wheel_link_collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.022</length>
+              <radius>0.035</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='fr_right_wheel_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://yahboom_bot_1/meshes/Ackermann/back_right_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='re_left_wheel_joint' type='revolute'>
+        <pose relative_to='base_footprint'>0.09173 0.08425 0.168 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>re_left_wheel_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <effort>70</effort>
+            <velocity>-1</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0.5</damping>
+            <friction>0.8</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='re_left_wheel_link'>
+        <pose relative_to='re_left_wheel_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 -0.001562 0 0 -0 0</pose>
+          <mass>3</mass>
+          <inertia>
+            <ixx>0.0196</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0196</iyy>
+            <iyz>0</iyz>
+            <izz>0.0294</izz>
+          </inertia>
+        </inertial>
+        <collision name='re_left_wheel_link_collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.022</length>
+              <radius>0.035</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='re_left_wheel_link_visual'>
+          <pose>0 0 0 3.14159 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://yahboom_bot_1/meshes/Ackermann/back_right_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='re_right_wheel_joint' type='revolute'>
+        <pose relative_to='base_footprint'>0.09173 -0.08425 0.168 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>re_right_wheel_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <effort>70</effort>
+            <velocity>-1</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0.5</damping>
+            <friction>0.8</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='re_right_wheel_link'>
+        <pose relative_to='re_right_wheel_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0.001562 -0 0 -0 0</pose>
+          <mass>3</mass>
+          <inertia>
+            <ixx>0.0196</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0196</iyy>
+            <iyz>0</iyz>
+            <izz>0.0294</izz>
+          </inertia>
+        </inertial>
+        <collision name='re_right_wheel_link_collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.035</length>
+              <radius>0.022</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='re_right_wheel_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://yahboom_bot_1/meshes/Ackermann/back_right_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='virtual_steering_wheel_joint' type='revolute'>
+        <pose relative_to='base_footprint'>-0.1122 0 0.1555 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>virtual_steer_link</child>
+        <axis>
+          <xyz>-1 0 0</xyz>
+          <limit>
+            <lower>-3</lower>
+            <upper>3</upper>
+            <effort>200</effort>
+            <velocity>20</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='virtual_steer_link'>
+        <pose relative_to='virtual_steering_wheel_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.001</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <visual name='virtual_steer_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.15 0.075</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <plugin name='gazebo_ros_joint_state_publisher' filename='libgazebo_ros_joint_state_publisher.so'>
+        <update_rate>100</update_rate>
+        <joint_name>fr_right_steer_joint</joint_name>
+        <joint_name>fr_right_wheel_joint</joint_name>
+        <joint_name>fr_left_steer_joint</joint_name>
+        <joint_name>fr_left_wheel_joint</joint_name>
+        <joint_name>re_right_wheel_joint</joint_name>
+        <joint_name>re_left_wheel_joint</joint_name>
+        <joint_name>virtual_steering_wheel_joint</joint_name>
+      </plugin>
+      <plugin name='gazebo_ros_joint_pose_trajectory' filename='libgazebo_ros_joint_pose_trajectory.so'>
+        <update_rate>2</update_rate>
+      </plugin>
+      <static>0</static>
+      <plugin name='gazebo_ackermann_drive' filename='libgazebo_ros_ackermann_drive.so'>
+        <ros>
+          <remapping>cmd_vel:=cmd_vel</remapping>
+          <remapping>odom:=odom/bot</remapping>
+          <remapping>distance:=distance/bot</remapping>
+        </ros>
+        <update_rate>100.0</update_rate>
+        <front_left_joint>fr_left_wheel_joint</front_left_joint>
+        <front_right_joint>fr_right_wheel_joint</front_right_joint>
+        <rear_left_joint>re_left_wheel_joint</rear_left_joint>
+        <rear_right_joint>re_right_wheel_joint</rear_right_joint>
+        <left_steering_joint>fr_left_steer_joint</left_steering_joint>
+        <right_steering_joint>fr_right_steer_joint</right_steering_joint>
+        <steering_wheel_joint>virtual_steering_wheel_joint</steering_wheel_joint>
+        <max_steer>0.383972</max_steer>
+        <max_steering_angle>1.570796</max_steering_angle>
+        <max_speed>5</max_speed>
+        <left_steering_pid_gain>1500 0 1</left_steering_pid_gain>
+        <left_steering_i_range>0 0</left_steering_i_range>
+        <right_steering_pid_gain>1500 0 1</right_steering_pid_gain>
+        <right_steering_i_range>0 0</right_steering_i_range>
+        <linear_velocity_pid_gain>1500 0 1</linear_velocity_pid_gain>
+        <linear_velocity_i_range>0 0</linear_velocity_i_range>
+        <publish_odom>1</publish_odom>
+        <publish_odom_tf>1</publish_odom_tf>
+        <publish_wheel_tf>0</publish_wheel_tf>
+        <publish_distance>1</publish_distance>
+        <odometry_frame>odom</odometry_frame>
+        <robot_base_frame>base_footprint</robot_base_frame>
+      </plugin>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <model name='unit_box'>
+      <pose>-0.665429 1.80113 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_cylinder'>
+      <pose>1.43069 1.66957 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.145833</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.145833</iyy>
+            <iyz>0</iyz>
+            <izz>0.125</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0'>
+      <pose>1.86423 -2.08328 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_cylinder_0'>
+      <pose>-0.235447 -1.85273 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.145833</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.145833</iyy>
+            <iyz>0</iyz>
+            <izz>0.125</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <state world_name='default'>
+      <sim_time>175 78000000</sim_time>
+      <real_time>177 643196913</real_time>
+      <wall_time>1747250135 177428188</wall_time>
+      <iterations>175078</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='my_bot'>
+        <pose>0.416634 -0.138916 -0.133384 0.00283 -0.001915 -0.101341</pose>
+        <scale>1 1 1</scale>
+        <link name='base_footprint'>
+          <pose>0.416634 -0.138916 -0.133384 0.00283 -0.001915 -0.101341</pose>
+          <velocity>0.007886 -0.003301 0.003278 -0.013057 0.048537 -0.010145</velocity>
+          <acceleration>-1.34826 0.538999 -7.2944 1.19938 -0.405714 0.703674</acceleration>
+          <wrench>-33.3425 13.3294 -180.39 0 -0 0</wrench>
+        </link>
+        <link name='fr_left_steer_link'>
+          <pose>0.748149 -0.107812 0.049045 0.002714 -0.001933 -0.101753</pose>
+          <velocity>0.022843 -0.008335 0.001757 0.005673 0.007082 0.070736</velocity>
+          <acceleration>-1.07176 -0.205 2.67361 -0.256418 0.868323 -0.689747</acceleration>
+          <wrench>-0.010718 -0.00205 0.026736 0 -0 0</wrench>
+        </link>
+        <link name='fr_left_wheel_link'>
+          <pose>0.750725 -0.085118 0.035029 0.00672 -1.1574 -0.117941</pose>
+          <velocity>0.019641 -0.006973 -0.002518 0.013703 0.018858 0.066548</velocity>
+          <acceleration>-1.28587 0.672031 -3.7582 -2.81524 -0.986714 2.72773</acceleration>
+          <wrench>-3.85761 2.01609 -11.2746 0 -0 0</wrench>
+        </link>
+        <link name='fr_right_steer_link'>
+          <pose>0.734905 -0.23706 0.047315 0.000884 -0.002358 -0.101413</pose>
+          <velocity>0.002577 -0.000974 0.016849 0.05857 -0.013739 -0.038914</velocity>
+          <acceleration>-13.1688 7.8151 65.0681 -2.99171 0.379883 0.480685</acceleration>
+          <wrench>-0.131688 0.078151 0.650681 0 -0 0</wrench>
+        </link>
+        <link name='fr_right_wheel_link'>
+          <pose>0.732725 -0.256498 0.035012 0.00148 -0.742408 -0.1156</pose>
+          <velocity>0.005429 -0.001198 0.010268 0.032532 0.140771 -0.046186</velocity>
+          <acceleration>-8.58582 6.21661 46.5377 -1.88571 0.617178 -2.73965</acceleration>
+          <wrench>-25.7574 18.6498 139.613 0 -0 0</wrench>
+        </link>
+        <link name='re_left_wheel_link'>
+          <pose>0.516048 -0.064819 0.035029 3.12448 1.4045 3.02339</pose>
+          <velocity>0.016763 -0.00204 -0.002565 2.81685 -0.121917 3.1226</velocity>
+          <acceleration>-0.931284 0.750312 -4.24941 -2.58769 0.862525 2.43608</acceleration>
+          <wrench>-2.79385 2.25094 -12.7482 0 -0 0</wrench>
+        </link>
+        <link name='re_right_wheel_link'>
+          <pose>0.499002 -0.232454 0.034551 0.002982 0.317793 -0.100404</pose>
+          <velocity>0.015094 -0.001947 0.000493 2.9036 -0.977207 3.12512</velocity>
+          <acceleration>-0.286606 0.531184 3.51794 2.53746 0.207431 -1.58528</acceleration>
+          <wrench>-0.859818 1.59355 10.5538 0 -0 0</wrench>
+        </link>
+        <link name='virtual_steer_link'>
+          <pose>0.304669 -0.127973 0.0219 0.008038 -0.001914 -0.101341</pose>
+          <velocity>0.015538 -0.000141 0.008569 0.004777 0.046786 -0.010099</velocity>
+          <acceleration>15.5376 -0.14063 8.56916 0 -0 0</acceleration>
+          <wrench>0.015538 -0.000141 0.008569 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box'>
+        <pose>-0.665757 1.801 0.5 0 0 -0.000225</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.665757 1.801 0.5 0 0 -0.000225</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 -0 0 1e-06 1e-06 0</acceleration>
+          <wrench>0 -0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0'>
+        <pose>1.8641 -2.0833 0.5 0 0 -0.000232</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>1.8641 -2.0833 0.5 0 0 -0.000232</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 -0 0 1e-06 1e-06 0</acceleration>
+          <wrench>0 -0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_cylinder'>
+        <pose>1.41758 1.65575 0.499998 5e-06 4e-06 -3e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>1.41758 1.65575 0.499998 5e-06 4e-06 -3e-06</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -9.8 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_cylinder_0'>
+        <pose>-0.240179 -1.85702 0.499998 5e-06 5e-06 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.240179 -1.85702 0.499998 5e-06 5e-06 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -9.8 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>3.43256 -5.07187 1.94834 0 0.379643 2.14419</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
