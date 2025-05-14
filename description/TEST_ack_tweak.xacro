@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+    <xacro:property name="body_mass" value="25.0" />
+    <xacro:property name="body_width" value="0.3" />
+    <xacro:property name="body_length" value="0.10" />
+    <xacro:property name="body_depth" value="0.75" />
+
+    <xacro:property name="wheel_radius" value="0.14" />
+    <xacro:property name="wheel_thickness" value="0.14" />
+    <xacro:property name="wheel_mass" value="3.0" />
+    <xacro:property name="steering_mass" value="0.01" />
+
+
+    <!-- BASE -->
+    <link name="base_footprint">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+    </link>
+
+    <link name="base_link">
+    </link>
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+    </joint>
+
+    <link name="chassis_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="24.73" />
+            <inertia ixx="${body_mass/12 * (body_width*body_width + body_length*body_length)}"
+                ixy="0" ixz="0"
+                iyy="${body_mass/12 * (body_length*body_length + body_depth*body_depth)}" iyz="0"
+                izz="${body_mass/12 * (body_width*body_width + body_depth*body_depth)}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://yahboom_bot_1/meshes/Ackermann/base_link.STL" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://yahboom_bot_1/meshes/Ackermann/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="chassis_link" />
+        <origin xyz="0.2078 0.0 0.1555" rpy="0 0 0" />
+    </joint>
+
+
+    <!-- FRONT LEFT WHEEL -->
+    <link name="fr_left_steer_link">
+        <inertial>
+            <origin xyz="-0.0044676 0.0031203 -0.014101" rpy="0 0 0" />
+            <mass value="${steering_mass}" />
+            <inertia
+                ixx="${steering_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                ixy="0" ixz="0"
+                iyy="${steering_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                iyz="0" izz="${steering_mass/2 * wheel_radius*wheel_radius}" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://yahboom_bot_1/meshes/Ackermann/front_left_steer.STL" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="fr_left_steer_joint" type="revolute">
+        <origin xyz="0.11922 0.065 0.0262" rpy="0 0 0" />
+        <parent link="chassis_link" />
+        <child link="fr_left_steer_link" />
+        <axis xyz="0 0 1" />
+        <limit upper="0.6" lower="-0.6" effort="-1.0" velocity="-1.0" />
+    </joint>
+    <link name="fr_left_wheel_link">
+        <inertial>
+            <origin xyz="-6.1417E-08 -0.0048115 4.113E-08" rpy="0 0 0" />
+            <mass value="${wheel_mass}" />
+            <inertia
+                ixx="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                ixy="0" ixz="0"
+                iyy="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                iyz="0" izz="${wheel_mass/2 * wheel_radius*wheel_radius}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi} 0 0" />
+            <geometry>
+                <mesh
+                filename="package://yahboom_bot_1/meshes/Ackermann/back_right_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.223529411764706 0.223529411764706 0.223529411764706 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+            <geometry>
+                <cylinder radius="0.035" length="0.022" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="fr_left_wheel_joint" type="continuous">
+        <origin xyz="0.00022897 0.0228 -0.0141" rpy="0 0 -0.010042" />
+        <parent link="fr_left_steer_link" />
+        <child link="fr_left_wheel_link" />
+        <axis xyz="0 1 0" />
+        <dynamics friction="0.8" damping="0.5" />
+        <limit lower="-3.14159" upper="3.14159" effort="200" velocity="-1" />
+
+
+    </joint>
+
+
+    <!-- FRONT RIGHT WHEEL -->
+    <link name="fr_right_steer_link">
+        <inertial>
+            <origin xyz="-0.0045387 -0.0030159 -0.012099" rpy="0 0 0" />
+            <mass value="${steering_mass}" />
+            <inertia
+                ixx="${steering_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                ixy="0" ixz="0"
+                iyy="${steering_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                iyz="0" izz="${steering_mass/2 * wheel_radius*wheel_radius}" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 ${pi}" />
+            <geometry>
+                <mesh
+                filename="package://yahboom_bot_1/meshes/Ackermann/front_left_steer.STL" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="fr_right_steer_joint" type="revolute">
+        <origin xyz="0.11922 -0.065 0.0242" rpy="0 0 0" />
+        <parent link="chassis_link" />
+        <child link="fr_right_steer_link" />
+        <axis xyz="0 0 1" />
+        <limit upper="0.6" lower="-0.6" effort="-1.0" velocity="-1.0" />
+    </joint>
+    <link name="fr_right_wheel_link">
+        <inertial>
+            <origin xyz="5.5753E-08 0.0015615 -5.0453E-08" rpy="0 0 0" />
+            <mass value="${wheel_mass}" />
+            <inertia
+                ixx="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                ixy="0" ixz="0"
+                iyy="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                iyz="0" izz="${wheel_mass/2 * wheel_radius*wheel_radius}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://yahboom_bot_1/meshes/Ackermann/back_right_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.223529411764706 0.223529411764706 0.223529411764706 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+            <geometry>
+                <cylinder radius="0.035" length="0.022" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="fr_right_wheel_joint" type="continuous">
+        <origin xyz="-0.00025662 -0.019549 -0.0121" rpy="0 0 -0.013126" />
+        <parent link="fr_right_steer_link" />
+        <child link="fr_right_wheel_link" />
+        <axis xyz="0 1 0" />
+        <dynamics friction="0.8" damping="0.5" />
+        <limit lower="-3.14159" upper="3.14159" effort="200" velocity="-1" />
+
+
+    </joint>
+
+
+    <!-- REAR LEFT WHEEL -->
+    <link name="re_left_wheel_link">
+        <inertial>
+            <origin xyz="-6.87042718550135E-08 -0.00156153690070754 3.00324059371304E-08" rpy="0 0 0" />
+            <mass value="${wheel_mass}" />
+            <inertia
+                ixx="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                ixy="0" ixz="0"
+                iyy="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                iyz="0" izz="${wheel_mass/2 * wheel_radius*wheel_radius}" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="${pi} 0 0" />
+            <geometry>
+                <mesh
+                filename="package://yahboom_bot_1/meshes/Ackermann/back_right_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.37647 0.37647 0.37647 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+            <geometry>
+                <cylinder radius="0.035" length="0.022" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="re_left_wheel_joint" type="continuous">
+        <origin xyz="-0.11607 0.08425 0.0125" rpy="0 0 0" />
+        <parent link="chassis_link" />
+        <child link="re_left_wheel_link" />
+        <axis xyz="0 1 0" />
+        <dynamics friction="0.8" damping="0.5" />
+        <limit lower="-3.14159" upper="3.14159" effort="70" velocity="-1" />
+
+
+    </joint>
+
+
+    <!-- REAR RIGHT WHEEL -->
+    <link name="re_right_wheel_link">
+        <inertial>
+            <origin
+                xyz="3.8959E-08 0.0015615 -6.3774E-08"
+                rpy="0 0 0" />
+            <mass value="${wheel_mass}" />
+            <inertia
+                ixx="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                ixy="0" ixz="0"
+                iyy="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
+                iyz="0" izz="${wheel_mass/2 * wheel_radius*wheel_radius}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+            <mesh
+                filename="package://yahboom_bot_1/meshes/Ackermann/back_right_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.37647 0.37647 0.37647 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+            <geometry>
+                <cylinder radius="0.022" length="0.035" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="re_right_wheel_joint" type="continuous">
+        <origin xyz="-0.11607 -0.08425 0.0125" rpy="0 0 0" />
+        <parent link="chassis_link" />
+        <child link="re_right_wheel_link" />
+        <axis xyz="0 1 0" />
+
+        <dynamics friction="0.8" damping="0.5" />
+        <limit lower="-3.14159" upper="3.14159" effort="70" velocity="-1" />
+
+
+    </joint>
+</robot>

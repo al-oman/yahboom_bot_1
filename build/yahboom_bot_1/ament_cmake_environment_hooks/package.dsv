@@ -1,0 +1,4 @@
+source;share/yahboom_bot_1/local_setup.bash
+source;share/yahboom_bot_1/local_setup.dsv
+source;share/yahboom_bot_1/local_setup.sh
+source;share/yahboom_bot_1/local_setup.zsh

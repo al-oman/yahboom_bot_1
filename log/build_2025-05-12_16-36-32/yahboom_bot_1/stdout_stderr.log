@@ -1,0 +1,97 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/config/controllers.yaml
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/config/empty.yaml
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/config/view_bot.rviz
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/config/view_bot2.rviz
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/description/gazebo_control.xacro
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/description/gazebo_control_diff.xacro
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/description/robot.urdf.xacro
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/description/robot_backup.urdf.xacro
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/description/robot_core.xacro
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/description/robot_core_test.xacro
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/description/test_ack.xacro
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/description/test_gazebo_ack.xacro
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/launch/launch_sim.launch.py
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/launch/robot_description_publisher.launch.py
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/launch/rsp.launch.py
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/launch/test.launch.py
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/worlds/empty.world
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/Ackermann/back_left_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/Ackermann/back_right_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/Ackermann/base_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/Ackermann/camera_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/Ackermann/front_left_steer.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/Ackermann/front_left_wheel.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/Ackermann/front_right_steer.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/Ackermann/front_right_wheel.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/Ackermann/laser_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/back_left_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/back_left_wheel_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/back_right_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/back_right_wheel_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/base_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/base_link_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/camera_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/camera_link_R2.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/front_left_steer.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/front_left_wheel.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/front_left_wheel_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/front_right_steer.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/front_right_wheel.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/front_right_wheel_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/laser_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/laser_link_R2.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/mecanum/back_left_wheel_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/mecanum/back_right_wheel_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/mecanum/base_link_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/mecanum/front_left_wheel_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/mecanum/front_right_wheel_X3.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/sensor/camera_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/meshes/sensor/laser_link.STL
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/ament_index/resource_index/package_run_dependencies/yahboom_bot_1
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/ament_index/resource_index/parent_prefix_path/yahboom_bot_1
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/environment/ament_prefix_path.sh
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/environment/ament_prefix_path.dsv
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/environment/path.sh
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/environment/path.dsv
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/local_setup.bash
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/local_setup.sh
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/local_setup.zsh
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/local_setup.dsv
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/package.dsv
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/ament_index/resource_index/packages/yahboom_bot_1
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/cmake/yahboom_bot_1Config.cmake
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/cmake/yahboom_bot_1Config-version.cmake
+-- Symlinking: /home/alex/ROS2/dev_ws/src/yahboom_bot_1/install/yahboom_bot_1/share/yahboom_bot_1/package.xml
