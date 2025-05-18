@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <robot name="yahboom_bot_1" xmlns:xacro="http://ros.org/wiki/xacro">
-  <!-- <xacro:include filename="TEST_ack_tweak.xacro" />
-  <xacro:include filename="TEST_gazebo_ack.xacro" /> -->
   <xacro:include filename="robot_core.xacro" />
   <xacro:include filename="gazebo_control.xacro" />
   <xacro:include filename="lidar.xacro" />
+  <xacro:include filename="camera.xacro" />
+
 </robot>
