@@ -1,0 +1,1 @@
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/ament_cmake_core/yahboom_bot_1Config.cmake

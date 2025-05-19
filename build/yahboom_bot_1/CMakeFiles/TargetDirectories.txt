@@ -1,0 +1,9 @@
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/CMakeFiles/uninstall.dir
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/CMakeFiles/yahboom_bot_1_uninstall.dir
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/CMakeFiles/test.dir
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/CMakeFiles/edit_cache.dir
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/CMakeFiles/rebuild_cache.dir
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/CMakeFiles/list_install_components.dir
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/CMakeFiles/install.dir
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/CMakeFiles/install/local.dir
+/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/CMakeFiles/install/strip.dir
