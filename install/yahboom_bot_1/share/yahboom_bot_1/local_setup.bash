@@ -1,1 +1,0 @@
-/home/alex/ROS2/dev_ws/src/yahboom_bot_1/build/yahboom_bot_1/ament_cmake_environment_hooks/local_setup.bash

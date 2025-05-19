@@ -1,1 +1,0 @@
-/home/alex/ROS2/dev_ws/src/yahboom_bot_1/launch/robot_description_publisher.launch.py
