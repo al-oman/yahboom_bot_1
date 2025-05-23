@@ -2,14 +2,14 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
-    <xacro:property name="body_mass" value="25.0" />
-    <xacro:property name="body_width" value="0.3" />
-    <xacro:property name="body_length" value="0.10" />
-    <xacro:property name="body_depth" value="0.75" />
+    <xacro:property name="body_mass" value="0.52" />
+    <xacro:property name="body_width" value="0.075" />
+    <xacro:property name="body_length" value="0.15" />
+    <xacro:property name="body_depth" value="0.05" />
 
-    <xacro:property name="wheel_radius" value="0.14" />
-    <xacro:property name="wheel_thickness" value="0.14" />
-    <xacro:property name="wheel_mass" value="3.0" />
+    <xacro:property name="wheel_radius" value="0.022" />
+    <xacro:property name="wheel_thickness" value="0.022" />
+    <xacro:property name="wheel_mass" value="0.5" />
     <xacro:property name="steering_mass" value="0.01" />
 
 
@@ -29,7 +29,7 @@
     <link name="chassis_link">
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0" />
-            <mass value="24.73" />
+            <mass value="${body_mass}" />
             <inertia ixx="${body_mass/12 * (body_width*body_width + body_length*body_length)}"
                 ixy="0" ixz="0"
                 iyy="${body_mass/12 * (body_length*body_length + body_depth*body_depth)}" iyz="0"
@@ -87,7 +87,7 @@
     </joint>
     <link name="fr_left_wheel_link">
         <inertial>
-            <origin xyz="-6.1417E-08 -0.0048115 4.113E-08" rpy="0 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <mass value="${wheel_mass}" />
             <inertia
                 ixx="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
@@ -154,7 +154,7 @@
     </joint>
     <link name="fr_right_wheel_link">
         <inertial>
-            <origin xyz="5.5753E-08 0.0015615 -5.0453E-08" rpy="0 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <mass value="${wheel_mass}" />
             <inertia
                 ixx="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
@@ -193,7 +193,7 @@
     <!-- REAR LEFT WHEEL -->
     <link name="re_left_wheel_link">
         <inertial>
-            <origin xyz="-6.87042718550135E-08 -0.00156153690070754 3.00324059371304E-08" rpy="0 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <mass value="${wheel_mass}" />
             <inertia
                 ixx="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}"
@@ -236,7 +236,7 @@
     <link name="re_right_wheel_link">
         <inertial>
             <origin
-                xyz="3.8959E-08 0.0015615 -6.3774E-08"
+                xyz="0 0 0"
                 rpy="0 0 0" />
             <mass value="${wheel_mass}" />
             <inertia
